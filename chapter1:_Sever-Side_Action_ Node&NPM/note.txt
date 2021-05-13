@@ -1,0 +1,32 @@
+npm install -g express
+npm ls
+npm -g ls
+npm update express
+
+to initializing a new npm/node project just run:
+npm init
+
+adding dependencies:
+1. "dependencies": {
+  "express": "^4.16.1"
+}
+2. run: 
+npm install express --save(-dev)
+
+Semantic Version, in package json, he tilde (~), caret (^), and asterisk (*) characters have special meaning
+ “express” : “1.2.3” – NPM will grab this specific version only.
+• “express”: “~1.2.3” – NPM will grab the most recent patch version. (So, ~1.2.3 will find the latest 1.2.x version but not 1.3.x or anything below 1.2.x.)
+• “express”: “^1.2.3” – NPM will grab the most recent minor version. (So, ^1.2.3 will find the latest 1.x.x version but not 1.3.x or anything below 1.x.x.)
+• “express”: “*” – NPM will grab the newest version available. (There is also an explicit latest value that does the same thing.)
+When using the npm install <package> command, you can add @major.minor.patch after the package name to specify the version to install using all the Semver rules described in the preceding text.
+
+Create a server.js file :
+
+require("http").createServer((inRequest, inResponse) => {
+  inResponse.end("Hello from my first Node Web server");
+}).listen(80);
+
+we can use 
+node server.js 
+or 
+"start": "node server.js" in npm
