@@ -1,0 +1,11 @@
+{
+  "name": "chapter2_advanced_node_and_npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
