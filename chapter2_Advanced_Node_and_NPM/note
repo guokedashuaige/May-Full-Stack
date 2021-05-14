@@ -63,3 +63,17 @@ const server = require("https").createServer(
 }).listen(443);
 
 ut the HTTP and HTTPS modules aren’t just about servers: they also provide the means for your Node-based code to make HTTP requests
+
+
+OS (os)
+
+Path (path)
+
+Query Strings
+
+URL (url)
+
+Utilities
+
+
+In this chapter, we delved into just a little more detail on Node and NPM, talking about package.json in more detail, some other NPM commands you might need, and we took a look at the standard libraries that ship with Node, at least those that I believe most developers would find of most significant interest.

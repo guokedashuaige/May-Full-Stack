@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Intro To React</title>
+    <script src="reactdevelopment.js"></script>
+    <script src="reactdom.js"></script>
+    <script>
+      function start() {
+        class Bookmark extends React.Component {
+          render() {
+            return React.createElement(
+              "li",
+              {},
+              React.createElement("h2", {}, this.props.title),
+              React.createElement(
+                "a",
+                { href: this.props.href },
+                this.props.description
+              )
+            );
+          }
+        }
+
+        const bookmarkTitle = { color: "red" };
+        const rootElement = React.createElement(
+          "div",
+          {},
+          React.createElement("h1", {}, "Bookmarks"),
+          React.createElement(
+            "ul",
+            {},
+            React.createElement(Bookmark, {
+              title: "Etherient",
+              href: "https://www.etherient.com",
+              description: "The home page of Etherient",
+            }),
+            React.createElement(Bookmark, {
+              title: "Frank's Site",
+              href: "https://www.zammetti.com",
+              description: "The web home of Frank W. Zammetti",
+            }),
+
+            React.createElement(
+              "h2",
+              { className: "bookmarkTitle" },
+              this.title
+            )
+          )
+        );
+        ReactDOM.render(rootElement, document.getElementById("mainContainer"));
+      }
+    </script>
+    <style>
+      h2 {
+        color: red;
+      }
+    </style>
+
+    <style>
+      .bookmarkTitle {
+        color: red;
+      }
+    </style>
+  </head>
+  <body onLoad="start();">
+    <div id="mainContainer"></div>
+  </body>
+</html>

@@ -10,9 +10,9 @@ const request = require("http").request(
   (inResponse) => {
     console.log(`STATUS: ${inResponse.statusCode}`);
     inResponse.setEncoding("utf8");
-    inResponse.on("data", (inDataChunk) => {
-      finalResponse += inDataChunk.
-    });
+    // inResponse.on("data", (inDataChunk) => ({
+    //   finalResponse += inDataChunk. 
+    // });
     inResponse.on("end", () => {
       console.log(finalResponse);
 }); }

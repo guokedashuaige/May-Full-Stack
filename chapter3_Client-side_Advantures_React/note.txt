@@ -1,0 +1,13 @@
+the React.createElement() method
+
+React.createElement(type, {props}, ...children);
+
+Components
+
+props
+What’s important to realize about props is three things. 
+First, they are always passed down from a parent component to a child. 
+Second, props are only given to the child component when it’s being created.
+rops can’t be changed once they are passed to the child and the component is created with them, but nothing says the component can’t be destroyed and recreated with all-new prop values, and that’s precisely what happens under the covers.
+
+Component another type to control the component

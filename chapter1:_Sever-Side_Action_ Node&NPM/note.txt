@@ -30,3 +30,24 @@ we can use
 node server.js 
 or 
 "start": "node server.js" in npm
+
+
+To create module ourself, We’re going to use the not-very- creatively-but-very-accurately-named request module, which will provide to our server an elementary HTTP client for it to use to make remote calls:
+npm install request --save
+Create server_time.js:
+require("http").createServer((inRequest, inResponse) => {
+  const requestModule = require("request");
+  requestModule(
+    "http://worldtimeapi.org/api/timezone/America/New_York",
+    function (inErr, inResp, inBody) {
+      inResponse.end(
+        `Hello from my first Node Web server: ${inBody}`
+); }
+  );
+}).listen(80);
+As you probably recognize, it’s the same code as before, but now with a bit more inside the callback function provided to createServer(). What we’re doing now is firstly to import the request module and to give it the name requestModule (just to help disambiguate it from the inRequest object passed into the callback function). The API for this module is straightforward: pass a URL to the constructor, plus a callback, and
+a call will be made to the URL, and the provided callback will be executed when the response to that call comes back. The URL here is to the World Time API, which you can read about here: http://worldtimeapi.org. This particular form of the URL (the API provides a few) takes in a time zone, America/New_York here (though you should certainly feel free to replace that with a time zone you prefer – you can access http:// worldtimeapi.org/api/timezone in a browser to see a list of available time zones). What we get back is a chunk of JSON, which is then written to the response that is returned to the browser.
+
+Summary
+In this chapter, we looked at Node and NPM and discussed the very basics of their usage. But, because Node and NPM are, conceptually, pretty simple things, these basics are, by and large, all you need to write real applications. You now know how to execute JavaScript code, how to create an NPM project, and how to add dependencies. You understand the difference between the global cache and the local (project) cache, and you even know how to write a basic web server!
+In the next chapter, we’ll continue looking at these two tools in a bit more detail, getting to some slightly more advanced stuff with them, to expand the foundation from which we’ll build our two apps later in the book.
