@@ -1,0 +1,52 @@
+A Better Way to Write React Code: JSX
+JSX, which stands for JavaScript XML, is an extension to the JavaScript language that adds XML syntax to the language.
+React is nothing but trees (of components) with attributes (props)!
+
+It looks like 
+React.createElement(
+  MaterialButton,
+  { color : "red",
+    onClick : function() { alert('clicked'); }
+  },
+  React.createElement(ButtonLabel, { text : "Click Me" })
+)
+
+
+To use babel , install:
+npm install --save-dev @babel/core @babel/cli
+
+to use babel, you need to tell it what to transpile,like:
+npx babel examplecode.js
+to do the thing, we should install plugins, like:
+npm install --save-dev @babel/plugin-transform-arrow-functions
+and we should tell babel to use the plugin,we have to create one more file: the .babelrc configuration file
+With that in place, Babel now knows to use this plugin when processing our file, which it will do if we execute the npx babel test.js command again. The output you’ll then see should be
+const newArray = [44, 55, 66].map(function (num) {
+  return n * 2;
+});
+You’ll likely want to write that output to a file rather than the console, and to do so is simple enough:
+npx babel <filename>.js --out-file <filename>_new.js
+and we can use presets to avoid installing a plugin for every single js, the most used are env and React
+For example, env presets allows us to do this in .babelrc file 
+{ "presets": [
+    [ "@babel/preset-env", {
+      "targets" : {
+        "browsers" : [ "last 3 versions", "safari >= 6" ]
+} }]
+] }
+That tells Babel, “I want you to produce code that will work in the last three versions of all browsers, and for Safari, support anything from version 6 on up”. Babel will take care of installing the appropriate plugins. Also, if you’re working in Node and don’t care about browsers, you can do
+{ "presets" : [
+    [ "@babel/preset-env", {
+      "targets" : { "node" : "7.00" }
+    }]
+] }
+That tells Babel to support Node back to version 7.
+To make use of this preset, you need to install a single plugin:
+npm install --save-dev @babel/preset-env
+Once that’s done, and .babelrc altered as shown in the preceding text (removing the
+@babel/plugin-transform-arrow-functions plugin), the output will now be
+"use strict";
+
+var newArray = [44, 55, 66].map(function (num) {
+  return n * 2;
+});
